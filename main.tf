@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_iam_role" "lambda_role" {
- name   = "terraform_aws_lambda_role"
+ name   = "terraform_aws_lambda_role_1"
  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -25,7 +25,7 @@ EOF
 
 resource "aws_iam_policy" "iam_policy_for_lambda" {
 
-  name         = "aws_iam_policy_for_terraform_aws_lambda_role"
+  name         = "aws_iam_policy_for_terraform_aws_lambda_role_1"
   path         = "/"
   description  = "AWS IAM Policy for managing aws lambda role"
   policy = <<EOF
@@ -65,7 +65,7 @@ data "archive_file" "zip_the_python_code" {
 # In terraform ${path.module} is the current directory.
 resource "aws_lambda_function" "terraform_lambda_func" {
  filename                       = "${path.module}/python/hello-python.zip"
- function_name                  = "Jhooq-Lambda-Function"
+ function_name                  = "Lambda-Function_python"
  role                           = aws_iam_role.lambda_role.arn
  handler                        = "hello-python.lambda_handler"
  runtime                        = "python3.8"

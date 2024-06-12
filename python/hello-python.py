@@ -7,14 +7,8 @@ def lambda_handler(event, context):
         result = price*(1-discount/100)
         result = f'The discounted price is : {result}'
     else:
-        result = '''You Should Pass the following parameters as json 
-        "price" with number 
-        "discount" with number like 50 for 50 percent discount
-        '''
-        
-   return {
-       'statusCode' : 200,
-       'body' : json.dumps(result)
-   }
-
-   
+        result = 'Missing Price or Discount parameters'
+    return {
+        'statusCode' : 200,
+        'body' : json.dumps(result)
+    }

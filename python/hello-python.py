@@ -1,9 +1,13 @@
+import json;
+
 def lambda_handler(event, context):
-   message = 'Hello {} !'.format(event['key1'])
+   price = int(event['price'])
+   discount = int(event['discount'])
+   result = price*(1-discount/100)
+   
    return {
-        'statusCode': 200,
-        'headers': {'Content-Type': 'application/json'},
-        'body': json.dumps(message)
+       'statusCode' : 200,
+       'body' : 
    }
 
    
